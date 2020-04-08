@@ -12,7 +12,7 @@ Another problem is that the array is not expandable. Using a small size may be m
 
 Both of these problems can be avoided by reallocating an array when it needs to expand. This is exactly what my DynArray does, let's see how it operates. 
 
-## How does it operate?
+## What's in the class?
 
 It is declared as a pointer and has a freelist allocator that allocates memory to it on instantiation and when it needs to expand.
 The template allows for the DynArray to be used with any type of element.
@@ -32,6 +32,8 @@ The [] operator gives access to the elements the DynArray contains.
 
 ## Memory allocations
 
+I use a FreelistAllocator because it connects unallocated regions of memory and it is perfect for dynamically allocating memory.
+On instantiation of a DynArray it allocates the amount of memory needed for two elements.
 
 ```cpp
 capacity_ = 2;
@@ -39,3 +41,17 @@ data_ = (T*)(allocator_.Allocate(sizeof(T) * capacity_, alignof(T)));
 data_[0] = elem;
 size_++;
 ```
+
+When an element is pushed in a DynArray that is already full of elements, the allocator allocates double the amount of memory to the DynArray, thus doubling its capacity. 
+
+```cpp
+if (size_ + 1 > capacity_) {
+	allocator_.Deallocate(data_);
+	capacity_ *= 2;
+	data_ = (T*)allocator_.Allocate(sizeof(T) * capacity_, alignof(T));
+	ata_[size_] = elem;
+	size_++;
+}
+```
+
+Doubling the capacity everytime it needs to expands allows the DynArray to quickly adapts its capacity in order to perform well even if a lot of elements are being pushed in.
