@@ -4,7 +4,7 @@ As a student at the SAE Institute of Geneva in the game programming section, I w
 
 Here, I'll be presenting my work on DynArrays.
 
-![](https://gjeannin0.github.io/editor.md/180x180.jpg)
+![](https://github.com/GJeannin0/Gjeannin0.github.io/edit/master/array.jpg)
 
 One problem with fixed-size arrays is that the programmer must assume a size for the array. This may lead to erroneous assumptions that can be the source of a lot of bugs. Because the maximum can be exceeded, directly causing bugs, and the array can be way bigger than needed, wasting memory.
 
