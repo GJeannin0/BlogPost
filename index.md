@@ -38,7 +38,7 @@ T& operator[](size_t index) {
 }
 ```
 
-It also includes simple methods to get its size and capacity.
+It also includes simple methods to get its size, to get its capacity and to push an element.
 Which can be needed to work with DynArrays.
 
 ```cpp
