@@ -10,7 +10,7 @@ One problem with fixed-size arrays is that the programmer must assume a size for
 
 Another problem is that the array is not expandable. Using a small size may be more efficient for the typical data, but prevents the program from running with larger data sets.
 
-As the standard library doesn't include dynamic arrays, I was tasked to implement one.
+As the standard library doesn't include dynamic arrays, I was tasked to implement one to better optimize the game engine.
 
 Both of these problems can be avoided by reallocating an array when it needs to expand. This is exactly what my DynArray does, let's see how it operates. 
 
