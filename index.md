@@ -12,3 +12,8 @@ Another problem is that the array is not expandable. Using a small size may be m
 
 Both of these problems can be avoided by reallocating an array when it needs to expand. This is exactly what my DynArray does. 
 
+####C++
+data_ = (T*)(allocator_.Allocate(sizeof(T) * capacity_, alignof(T)));
+				data_[0] = elem;
+				size_++;
+
