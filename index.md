@@ -67,7 +67,7 @@ if (size_ + 1 > capacity_) {
 	allocator_.Deallocate(data_);
 	capacity_ *= 2;
 	data_ = (T*)allocator_.Allocate(sizeof(T) * capacity_, alignof(T));
-	ata_[size_] = elem;
+	data_[size_] = elem;
 	size_++;
 }
 ```
