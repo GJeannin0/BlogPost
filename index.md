@@ -37,6 +37,16 @@ T& operator[](size_t index) {
 }
 ```
 
+It also includes simple methods to get its size and capacity.
+Which can be needed to work with DynArrays.
+
+```cpp
+size_t GetSize() const {return size_;}
+
+size_t GetCapacity() const {return capacity_;}
+```
+
+
 ## Memory allocations
 
 I use a custom FreelistAllocator because it connects unallocated regions of memory and it is perfect for dynamically allocating memory.
