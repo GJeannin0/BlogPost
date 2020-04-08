@@ -80,7 +80,7 @@ If the fixed amount is too big for the number of elements, the capacity would be
 
 And because memory allocations are costly in performance, this would be bad.
 
-## What I learned working on DynArrays
+## What I learned while working on DynArrays
 
 I had to learn about memory allocations to understand the different ways it can be done and how much it costs to use. 
 For example I learned how having aligned memory could help a program operates faster, just by using the right addresses for the right elements.
