@@ -10,13 +10,13 @@ One problem with fixed-size arrays is that the programmer must assume a size for
 
 Another problem is that the array is not expandable. Using a small size may be more efficient for the typical data, but prevents the program from running with larger data sets.
 
-As the standard library doesnt includes dynamic arrays, I was tasked to implement one.
+As the standard library doesn't include dynamic arrays, I was tasked to implement one.
 
 Both of these problems can be avoided by reallocating an array when it needs to expand. This is exactly what my DynArray does, let's see how it operates. 
 
 ## What's in the class?
 
-It is declared as a pointer and has a freelist allocator that allocates memory to it on instantiation and when it needs to expand.
+It is declared as a pointer and has a FreelistAllocator that allocates memory to it on instantiation and when it needs to expand.
 The template allows for the DynArray to be used with any type of element.
 And it keeps its size and capacity in memory.
 
@@ -51,7 +51,7 @@ size_t GetCapacity() const {return capacity_;}
 ## Memory allocations
 
 I use a custom FreelistAllocator because it connects unallocated regions of memory and it is perfect for dynamically allocating memory.
-On instantiation of a DynArray it allocates the amount of memory needed for two elements and ensures that it is correctly aligned.
+On instantiation of a DynArray, it allocates the amount of memory needed for two elements and ensures that it is correctly aligned.
 
 ```cpp
 capacity_ = 2;
@@ -83,7 +83,7 @@ And because memory allocations are costly in performance, this would be worse.
 ## What I learned working on DynArrays
 
 I had to learn about memory allocations to understand the different ways it can be done and how much it costs to use. 
-For exemple I learned how having aligned memory could help a program operates faster, just by using the right adresses for the right elements.
+For example I learned how having aligned memory could help a program operates faster, just by using the right addresses for the right elements.
 
 I also learned to use tools I never used before like allocators.
 
