@@ -1,4 +1,4 @@
-Dynamic arrays optimization
+#H1 Dynamic arrays optimization Header
 
 As a student at the SAE Institute of Geneva in the game programming section, I was tasked to implement and to optimize some of the basic features of a game engine. 
 
@@ -8,4 +8,4 @@ One problem with fixed-size arrays is that the programmer must assume a size for
 
 Another problem is that the array is not expandable. Using a small size may be more efficient for the typical data, but prevents the program from running with larger data sets.
 
-Both of these problems can be avoided by using a dynamically allocating an array of the right size.
+Both of these problems can be avoided by reallocating an array when it needs to expand. This is exactly what my DynArray does. 
