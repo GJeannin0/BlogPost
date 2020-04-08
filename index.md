@@ -42,7 +42,7 @@ data_[0] = elem;
 size_++;
 ```
 
-When an element is pushed in a DynArray that is already full of elements, the allocator allocates double the amount of memory to the DynArray, thus doubling its capacity. 
+When an element is pushed in a DynArray that is already full of elements, the allocator allocates double the amount of memory to the DynArray, thus doubling its capacity. It also deallocates the memory space that is no longer used by the DynArray.
 
 ```cpp
 if (size_ + 1 > capacity_) {
@@ -54,4 +54,4 @@ if (size_ + 1 > capacity_) {
 }
 ```
 
-Doubling the capacity everytime it needs to expands allows the DynArray to quickly adapts its capacity in order to perform well even if a lot of elements are being pushed in.
+Doubling the capacity every time it needs to expands allows the DynArray to quickly adapt its capacity in order to perform well even if a lot of elements are being pushed in.
