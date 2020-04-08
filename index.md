@@ -20,8 +20,7 @@ And it keeps its size and capacity in memory.
 
 ```cpp
 template<typename T>
-	class DynArray
-	{
+	class DynArray	{
 	private:
 		FreeListAllocator& allocator_;
 		size_t capacity_ = 0;
