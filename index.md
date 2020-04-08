@@ -21,11 +21,11 @@ And it keeps its size and capacity in memory.
 ```cpp
 template<typename T>
 	class DynArray	{
-	private:
-		FreeListAllocator& allocator_;
-		size_t capacity_ = 0;
-		size_t size_ = 0;
-		T* data_ = nullptr;
+		private:
+			FreeListAllocator& allocator_;
+			size_t capacity_ = 0;
+			size_t size_ = 0;
+			T* data_ = nullptr;
 ```
 The [] operator gives access to the elements the DynArray contains.
 
