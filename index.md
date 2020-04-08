@@ -78,7 +78,7 @@ This makes it a good ground to find an optimized capacity.
 As opposed to adding memory for a fixed amount elements, where the capacity could be far from what's needed. 
 If the fixed amount is too big for the number of elements, the capacity would become too big, wasting memory space and if the fixed amount is too small, it would need a lot of allocations to reach sufficient size. 
 
-And because memory allocations are costly in performance, this would be worse.
+And because memory allocations are costly in performance, this would be bad.
 
 ## What I learned working on DynArrays
 
