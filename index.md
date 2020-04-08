@@ -14,7 +14,7 @@ Both of these problems can be avoided by reallocating an array when it needs to 
 
 ## How does it operate?
 
-It is declared as a pointer and has an allocator that allocates memory to it on instantiation and when it needs to expand.
+It is declared as a pointer and has a freelist allocator that allocates memory to it on instantiation and when it needs to expand.
 The template allows for the DynArray to be used with any type of element.
 And it keeps its size and capacity in memory.
 
@@ -28,8 +28,13 @@ template<typename T>
 		size_t size_ = 0;
 		T* data_ = nullptr;
 ```
+The [] operator gives access to the elements the DynArray contains.
+
+## Memory allocations
+
 
 ```cpp
+capacity_ = 2;
 data_ = (T*)(allocator_.Allocate(sizeof(T) * capacity_, alignof(T)));
 data_[0] = elem;
 size_++;
