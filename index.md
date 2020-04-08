@@ -10,6 +10,8 @@ One problem with fixed-size arrays is that the programmer must assume a size for
 
 Another problem is that the array is not expandable. Using a small size may be more efficient for the typical data, but prevents the program from running with larger data sets.
 
+As the standard library doesnt includes dynamic arrays, I was tasked to implement one.
+
 Both of these problems can be avoided by reallocating an array when it needs to expand. This is exactly what my DynArray does, let's see how it operates. 
 
 ## What's in the class?
@@ -76,5 +78,21 @@ This makes it a good ground to find an optimized capacity.
 As opposed to adding memory for a fixed amount elements, where the capacity could be far from what's needed. 
 If the fixed amount is too big for the number of elements, the capacity would become too big, wasting memory space and if the fixed amount is too small, it would need a lot of allocations to reach sufficient size. 
 
-And because memory allocations are costly in performance, this would be bad.
+And because memory allocations are costly in performance, this would be worse.
 
+## What I learned working on DynArrays
+
+I had to learn about memory allocations to understand the different ways it can be done and how much it costs to use. 
+For exemple I learned how having aligned memory could help a program operates faster, just by using the right adresses for the right elements.
+
+I also learned to use tools I never used before like allocators.
+
+Despite it being complex to learn, this knowledge helps me better understand how low-level optimizations can help game engines perform better.
+
+## Conclusion
+
+It was a good experience working on DynArrays, as it is a low-level task it required me to do more research than usual to understand the matter, and that allowed me to become more sensitive to how I implement things.
+
+
+
+Thanks for reading me.
