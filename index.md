@@ -14,6 +14,6 @@ Both of these problems can be avoided by reallocating an array when it needs to 
 
 ```cpp
 data_ = (T*)(allocator_.Allocate(sizeof(T) * capacity_, alignof(T)));
-				data_[0] = elem;
-				size_++;
+data_[0] = elem;
+size_++;
 ```
