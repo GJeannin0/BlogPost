@@ -30,6 +30,13 @@ template<typename T>
 ```
 The [] operator gives access to the elements the DynArray contains.
 
+```cpp
+T& operator[](size_t index) {
+			neko_assert(index >= 0 && index < size_, "[Error] Out of scope access");
+			return data_[index];
+		}
+```
+
 ## Memory allocations
 
 I use a FreelistAllocator because it connects unallocated regions of memory and it is perfect for dynamically allocating memory.
