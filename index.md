@@ -39,8 +39,8 @@ T& operator[](size_t index) {
 
 ## Memory allocations
 
-I use a FreelistAllocator because it connects unallocated regions of memory and it is perfect for dynamically allocating memory.
-On instantiation of a DynArray it allocates the amount of memory needed for two elements.
+I use a custom FreelistAllocator because it connects unallocated regions of memory and it is perfect for dynamically allocating memory.
+On instantiation of a DynArray it allocates the amount of memory needed for two elements and ensures that it is correctly aligned.
 
 ```cpp
 capacity_ = 2;
@@ -60,5 +60,7 @@ if (size_ + 1 > capacity_) {
 	size_++;
 }
 ```
+Doubling the capacity every time it needs to expands allows the DynArray to adapt its capacity with few allocations in order to perform well even if a lot of elements are being pushed in, while its capacity won't use too much memory for the size it needs to contain.
+This makes it a good ground to find an optimized capacity.
+As opposed to adding memory for a fixed amount elements, where the capacity could be far from what's needed. If the fixed amount is too big for the number of elements, the capacity would be too big, wasting memory space or if the fixed amount is too small, it would need a lot of allocations to reach sufficient size. And because memory allocations are very costly in performance, this would be bad.
 
-Doubling the capacity every time it needs to expands allows the DynArray to quickly adapt its capacity in order to perform well even if a lot of elements are being pushed in.
