@@ -32,9 +32,9 @@ The [] operator gives access to the elements the DynArray contains.
 
 ```cpp
 T& operator[](size_t index) {
-			neko_assert(index >= 0 && index < size_, "[Error] Out of scope access");
-			return data_[index];
-		}
+	neko_assert(index >= 0 && index < size_, "[Error] Out of scope access");
+	return data_[index];
+}
 ```
 
 ## Memory allocations
