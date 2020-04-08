@@ -51,7 +51,7 @@ size_t GetCapacity() const {return capacity_;}
 ## Memory allocations
 
 I use a custom FreelistAllocator because it connects unallocated regions of memory and it is perfect for dynamically allocating memory.
-On instantiation of a DynArray, it allocates the amount of memory needed for two elements and ensures that it is correctly aligned.
+When the first element is pushed in a DynArray, it allocates the amount of memory needed for two elements and ensures that it is correctly aligned.
 
 ```cpp
 capacity_ = 2;
