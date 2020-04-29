@@ -66,17 +66,16 @@ When an element is pushed in a DynArray that is already full of elements, the al
 
 ```cpp
 if (size_ + 1 > capacity_) {
-					capacity_ *= 2;
-					T* data = (T*)allocator_.Allocate(sizeof(T) * capacity_, alignof(T));
-					for(int i=0; i<size_;i++){
-						data[i] = data_[i];
-					}
-					data[size_] = elem;
-					size_++;
-					allocator_.Deallocate(data_);
-					
-					data_ = data;
-				}
+	capacity_ *= 2;
+	T* data = (T*)allocator_.Allocate(sizeof(T) * capacity_, alignof(T));
+	for(int i=0; i<size_;i++){
+		data[i] = data_[i];
+	}
+	data[size_] = elem;
+	size_++;
+	allocator_.Deallocate(data_);					
+	data_ = data;
+}
 ```
 Doubling the capacity every time it needs to expands allows the DynArray to adapt its capacity with few allocations in order to perform well even if a lot of elements are being pushed in, while its capacity won't use too much memory for the size it needs to contain.
 
