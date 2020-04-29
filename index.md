@@ -55,11 +55,11 @@ When the first element is pushed in a DynArray, it allocates the amount of memor
 
 ```cpp
 if (data_ == nullptr) {
-				capacity_ = 2;
-				data_ = (T*)allocator_.Allocate(sizeof(T) * capacity_, alignof(T));
-				data_[0] = elem;
-				size_++;
-			}
+	capacity_ = 2;
+	data_ = (T*)allocator_.Allocate(sizeof(T) * capacity_, alignof(T));
+	data_[0] = elem;
+	size_++;
+}
 ```
 
 When an element is pushed in a DynArray that is already full of elements, the allocator allocates double the amount of memory to the DynArray, thus doubling its capacity. It also deallocates the memory space that is no longer used by the DynArray.
