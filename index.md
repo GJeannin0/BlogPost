@@ -88,7 +88,7 @@ And because memory allocations are costly in performance, this would be bad.
 
 ## Perfomances
 
-![](https://github.com/GJeannin0/Gjeannin0.github.io/blob/master/Images/bench.jpg)
+![](https://github.com/GJeannin0/Gjeannin0.github.io/blob/master/Images/bench.png)
 Compiled on Windows 10, CPU Intel(R) Core(™) i7-9750H 2.60 GHz
 
 DynArray is faster than std vector for pushing data, and that's good.
