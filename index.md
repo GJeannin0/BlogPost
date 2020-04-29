@@ -77,9 +77,11 @@ if (size_ + 1 > capacity_) {
 	data_ = data;
 }
 ```
-Doubling the capacity every time it needs to expands allows the DynArray to adapt its capacity with few allocations in order to perform well even if a lot of elements are being pushed in, while its capacity won't use too much memory for the size it needs to contain.
+Multiplying the capacity every time it needs to expands allows the DynArray to adapt its capacity with few allocations in order to perform well even if a lot of elements are being pushed in, while its capacity won't use too much memory for the size it needs to contain.
 
-This makes it a good ground to find an optimized capacity.
+The amount to multiply the capcity with is determined by the memory budget available and the cost of syscalls.
+
+Because we have several Gigabytes of RAM available, doubling the capacity is a good ground.
 
 As opposed to adding memory for a fixed amount elements, where the capacity could be far from what's needed. 
 If the fixed amount is too big for the number of elements, the capacity would become too big, wasting memory space and if the fixed amount is too small, it would need a lot of allocations to reach sufficient size. 
@@ -89,6 +91,7 @@ And because memory allocations are costly in performance, this would be bad.
 ## Perfomances
 
 ![](https://github.com/GJeannin0/Gjeannin0.github.io/blob/master/Images/bench.png)
+
 Compiled on Windows 10, CPU Intel(R) Core(™) i7-9750H 2.60 GHz
 
 DynArray is faster than std vector for pushing data, and that's good.
