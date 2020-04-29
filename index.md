@@ -86,6 +86,13 @@ If the fixed amount is too big for the number of elements, the capacity would be
 
 And because memory allocations are costly in performance, this would be bad.
 
+## Perfomances
+
+![](https://github.com/GJeannin0/Gjeannin0.github.io/blob/master/Images/bench.jpg)
+Compiled on Windows 10, CPU Intel(R) Core(™) i7-9750H 2.60 GHz
+
+DynArray is faster than std vector for pushing data, and that's good.
+
 ## What I learned while working on DynArrays
 
 I had to learn about memory allocations to understand the different ways it can be done and how much it costs to use. 
