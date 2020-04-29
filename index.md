@@ -10,7 +10,7 @@ One problem with fixed-size arrays is that the programmer must assume a size for
 
 Another problem is that the array is not expandable. Using a small size may be more efficient for the typical data, but prevents the program from running with larger data sets.
 
-The standard library includes vectors that can avoid these problems, however vectors take a lot of memory, so I was tasked to implement a dynamic array to better optimize the game engine.
+The standard library includes vectors that can avoid these problems, and the DynArray is a simpler vector.
 
 Both of these problems can be avoided by reallocating an array when it needs to expand. This is exactly what my DynArray does, let's see how it operates. 
 
@@ -38,7 +38,7 @@ T& operator[](size_t index) {
 }
 ```
 
-It also includes simple methods to get its size, to get its capacity and to push an element.
+It also includes simple methods to get its size, to get its capacity, to insert an element and to push an element.
 Which can be needed to work with DynArrays.
 
 ```cpp
@@ -46,7 +46,6 @@ size_t GetSize() const {return size_;}
 
 size_t GetCapacity() const {return capacity_;}
 ```
-
 
 ## Memory allocations
 
@@ -80,13 +79,7 @@ if (size_ + 1 > capacity_) {
 Multiplying the capacity every time it needs to expands allows the DynArray to adapt its capacity with few allocations in order to perform well even if a lot of elements are being pushed in, while its capacity won't use too much memory for the size it needs to contain.
 
 The amount to multiply the capcity with is determined by the memory budget available and the cost of syscalls.
-
 Because we have several Gigabytes of RAM available, doubling the capacity is a good ground.
-
-As opposed to adding memory for a fixed amount elements, where the capacity could be far from what's needed. 
-If the fixed amount is too big for the number of elements, the capacity would become too big, wasting memory space and if the fixed amount is too small, it would need a lot of allocations to reach sufficient size. 
-
-And because memory allocations are costly in performance, this would be bad.
 
 ## Perfomances
 
