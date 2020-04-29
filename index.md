@@ -54,22 +54,29 @@ I use a custom FreelistAllocator because it connects unallocated regions of memo
 When the first element is pushed in a DynArray, it allocates the amount of memory needed for two elements and ensures that it is correctly aligned.
 
 ```cpp
-capacity_ = 2;
-data_ = (T*)(allocator_.Allocate(sizeof(T) * capacity_, alignof(T)));
-data_[0] = elem;
-size_++;
+if (data_ == nullptr) {
+				capacity_ = 2;
+				data_ = (T*)allocator_.Allocate(sizeof(T) * capacity_, alignof(T));
+				data_[0] = elem;
+				size_++;
+			}
 ```
 
 When an element is pushed in a DynArray that is already full of elements, the allocator allocates double the amount of memory to the DynArray, thus doubling its capacity. It also deallocates the memory space that is no longer used by the DynArray.
 
 ```cpp
 if (size_ + 1 > capacity_) {
-	allocator_.Deallocate(data_);
-	capacity_ *= 2;
-	data_ = (T*)allocator_.Allocate(sizeof(T) * capacity_, alignof(T));
-	data_[size_] = elem;
-	size_++;
-}
+					capacity_ *= 2;
+					T* data = (T*)allocator_.Allocate(sizeof(T) * capacity_, alignof(T));
+					for(int i=0; i<size_;i++){
+						data[i] = data_[i];
+					}
+					data[size_] = elem;
+					size_++;
+					allocator_.Deallocate(data_);
+					
+					data_ = data;
+				}
 ```
 Doubling the capacity every time it needs to expands allows the DynArray to adapt its capacity with few allocations in order to perform well even if a lot of elements are being pushed in, while its capacity won't use too much memory for the size it needs to contain.
 
